@@ -11,19 +11,22 @@
 #include <fcntl.h>
 #include <sys/socket.h>
 #include <protocol.h>
+
+#include <list>
+
  using namespace std;
  typedef unsigned short uint16;
+
 class ChatSocket
 {
 public:
-    ChatSocket(int sockfd);
-    void offLine(int m_sockfd);
-    int    m_sockfd;
-    string m_userName;
-    static void handler(int sockfd,PDU *pdu);
-private:
-    
    
+    ChatSocket(int sockfd);
+    static void offLine(int m_sockfd);
+    static void login(const int &m_sockfd,const std::string &name);
+    static void handler(int sockfd,PDU *pdu);
+    static void printOline();
+private:
    
 };
 

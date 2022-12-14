@@ -1,4 +1,6 @@
 #include "Epoll.h"
+#include "ChatSocket.h"
+
  #define EPOLL_SIZE			1024
  #define BUFFER_LENGTsH		1024
 Epoll::Epoll(int sockfd)
@@ -13,6 +15,7 @@ void Epoll::run()
     struct epoll_event ev;
     ev.events = EPOLLIN;
     ev.data.fd = m_sockfd;
+   
     epoll_ctl(epfd, EPOLL_CTL_ADD, m_sockfd, &ev);
     while (1) {
         int nready = epoll_wait(epfd, events, EPOLL_SIZE, -1);
@@ -45,26 +48,33 @@ void Epoll::run()
 					ev.events = EPOLLIN | EPOLLET;
 					ev.data.fd = clientfd;
                     // 及时清除IO
+                    // ChatSocket::lus.remove_if([&](int socketFd){
+                    //     return socketFd == clientfd;
+                    // });
 					epoll_ctl(epfd, EPOLL_CTL_DEL, clientfd, &ev);
 				}
 				else if (len == 0) {
-                    printf("客户端断开%d: %s, %d byte(s)\n", clientfd,buffer, len);
-					close(clientfd);
+                    printf("客户端%d断开\n", clientfd);
+					
 					ev.events = EPOLLIN | EPOLLET;
 					ev.data.fd = clientfd;
+                    ChatSocket::offLine(clientfd);
                     // 及时清除IO
+                    close(clientfd);
 					epoll_ctl(epfd, EPOLL_CTL_DEL, clientfd, &ev);
 				}
 				else {
-					printf("Recv%d: %s, %d byte(s)\n", clientfd,buffer, len);
+					// printf("Recv%d: %s, %d byte(s)\n", clientfd,buffer, len);
                     uint uiPDULen = 0; //数据总长度
                     memcpy((char *)&uiPDULen, buffer, sizeof(uint));
-                    printf("sizeof(PDU):%d\n",int(sizeof(PDU)));
+                    // printf("sizeof(PDU):%d\n",int(sizeof(PDU)));
 
                     PDU *pdu = mkPDU(uiPDULen-sizeof(PDU));
                     memcpy(pdu, buffer, uiPDULen);
 
                     ChatSocket::handler(clientfd,pdu);
+                    delete pdu;
+                    pdu = nullptr;
 				}
             }
         }

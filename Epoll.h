@@ -13,7 +13,7 @@
 #include <fcntl.h>
 #include <vector>
 #include <sys/socket.h>
-#include "ChatSocket.h"
+
 #include "protocol.h"
  typedef unsigned short uint16;
  #define EPOLL_SIZE			1024
@@ -25,6 +25,8 @@ class Epoll
 public:
     Epoll(int sockfd);
     void run();
+   
+   
  private:
     int m_sockfd;
 };
