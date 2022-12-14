@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../protocol.h
+
+/home/ekko/chatServer/ChatSocket.cpp
+ChatSocket.h
+/home/ekko/chatServer/ChatSocket.h
+
+/home/ekko/chatServer/ChatSocket.h
+string
+-
+iostream
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+netinet/tcp.h
+-
+arpa/inet.h
+-
+pthread.h
+-
+errno.h
+-
+fcntl.h
+-
+sys/socket.h
+-
+protocol.h
+-
+

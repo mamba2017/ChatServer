@@ -1,0 +1,3 @@
+/home/ekko/chatServer/build/CMakeFiles/rebuild_cache.dir
+/home/ekko/chatServer/build/CMakeFiles/edit_cache.dir
+/home/ekko/chatServer/build/CMakeFiles/tcp.dir
