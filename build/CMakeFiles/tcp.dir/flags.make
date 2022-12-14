@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ekko/chatServer/. 
+CXX_INCLUDES = -I/usr/include/mysql -I/home/ekko/chatServer/. 
 

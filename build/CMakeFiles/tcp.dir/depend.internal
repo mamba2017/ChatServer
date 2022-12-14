@@ -4,21 +4,56 @@
 CMakeFiles/tcp.dir/ChatServer.cpp.o
  /home/ekko/chatServer/ChatServer.cpp
  /home/ekko/chatServer/ChatServer.h
- /home/ekko/chatServer/ChatSocket.h
  /home/ekko/chatServer/Epoll.h
  /home/ekko/chatServer/protocol.h
 CMakeFiles/tcp.dir/ChatSocket.cpp.o
  ../protocol.h
  /home/ekko/chatServer/ChatSocket.cpp
  /home/ekko/chatServer/ChatSocket.h
+ /home/ekko/chatServer/LoginedSocket.h
+ /home/ekko/chatServer/opendb.h
+ /usr/include/mysql/errmsg.h
+ /usr/include/mysql/field_types.h
+ /usr/include/mysql/my_command.h
+ /usr/include/mysql/my_compress.h
+ /usr/include/mysql/my_list.h
+ /usr/include/mysql/mysql.h
+ /usr/include/mysql/mysql_com.h
+ /usr/include/mysql/mysql_time.h
+ /usr/include/mysql/mysql_version.h
 CMakeFiles/tcp.dir/Epoll.cpp.o
  /home/ekko/chatServer/ChatSocket.h
  /home/ekko/chatServer/Epoll.cpp
  /home/ekko/chatServer/Epoll.h
  /home/ekko/chatServer/protocol.h
+CMakeFiles/tcp.dir/LoginedSocket.cpp.o
+ /home/ekko/chatServer/LoginedSocket.cpp
+ /home/ekko/chatServer/LoginedSocket.h
 CMakeFiles/tcp.dir/main.cpp.o
  /home/ekko/chatServer/ChatServer.h
  /home/ekko/chatServer/main.cpp
+ /home/ekko/chatServer/opendb.h
+ /usr/include/mysql/errmsg.h
+ /usr/include/mysql/field_types.h
+ /usr/include/mysql/my_command.h
+ /usr/include/mysql/my_compress.h
+ /usr/include/mysql/my_list.h
+ /usr/include/mysql/mysql.h
+ /usr/include/mysql/mysql_com.h
+ /usr/include/mysql/mysql_time.h
+ /usr/include/mysql/mysql_version.h
+CMakeFiles/tcp.dir/opendb.cpp.o
+ /home/ekko/chatServer/opendb.cpp
+ /home/ekko/chatServer/opendb.h
+ /usr/include/mysql/errmsg.h
+ /usr/include/mysql/field_types.h
+ /usr/include/mysql/my_command.h
+ /usr/include/mysql/my_compress.h
+ /usr/include/mysql/my_list.h
+ /usr/include/mysql/mysql.h
+ /usr/include/mysql/mysql_com.h
+ /usr/include/mysql/mysql_time.h
+ /usr/include/mysql/mysql_version.h
 CMakeFiles/tcp.dir/protocol.cpp.o
  /home/ekko/chatServer/protocol.cpp
  /home/ekko/chatServer/protocol.h

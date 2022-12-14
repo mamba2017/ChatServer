@@ -204,6 +204,33 @@ Epoll.cpp.s:
 	$(MAKE) -f CMakeFiles/tcp.dir/build.make CMakeFiles/tcp.dir/Epoll.cpp.s
 .PHONY : Epoll.cpp.s
 
+LoginedSocket.o: LoginedSocket.cpp.o
+
+.PHONY : LoginedSocket.o
+
+# target to build an object file
+LoginedSocket.cpp.o:
+	$(MAKE) -f CMakeFiles/tcp.dir/build.make CMakeFiles/tcp.dir/LoginedSocket.cpp.o
+.PHONY : LoginedSocket.cpp.o
+
+LoginedSocket.i: LoginedSocket.cpp.i
+
+.PHONY : LoginedSocket.i
+
+# target to preprocess a source file
+LoginedSocket.cpp.i:
+	$(MAKE) -f CMakeFiles/tcp.dir/build.make CMakeFiles/tcp.dir/LoginedSocket.cpp.i
+.PHONY : LoginedSocket.cpp.i
+
+LoginedSocket.s: LoginedSocket.cpp.s
+
+.PHONY : LoginedSocket.s
+
+# target to generate assembly for a file
+LoginedSocket.cpp.s:
+	$(MAKE) -f CMakeFiles/tcp.dir/build.make CMakeFiles/tcp.dir/LoginedSocket.cpp.s
+.PHONY : LoginedSocket.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -230,6 +257,33 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles/tcp.dir/build.make CMakeFiles/tcp.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+opendb.o: opendb.cpp.o
+
+.PHONY : opendb.o
+
+# target to build an object file
+opendb.cpp.o:
+	$(MAKE) -f CMakeFiles/tcp.dir/build.make CMakeFiles/tcp.dir/opendb.cpp.o
+.PHONY : opendb.cpp.o
+
+opendb.i: opendb.cpp.i
+
+.PHONY : opendb.i
+
+# target to preprocess a source file
+opendb.cpp.i:
+	$(MAKE) -f CMakeFiles/tcp.dir/build.make CMakeFiles/tcp.dir/opendb.cpp.i
+.PHONY : opendb.cpp.i
+
+opendb.s: opendb.cpp.s
+
+.PHONY : opendb.s
+
+# target to generate assembly for a file
+opendb.cpp.s:
+	$(MAKE) -f CMakeFiles/tcp.dir/build.make CMakeFiles/tcp.dir/opendb.cpp.s
+.PHONY : opendb.cpp.s
 
 protocol.o: protocol.cpp.o
 
@@ -276,9 +330,15 @@ help:
 	@echo "... Epoll.o"
 	@echo "... Epoll.i"
 	@echo "... Epoll.s"
+	@echo "... LoginedSocket.o"
+	@echo "... LoginedSocket.i"
+	@echo "... LoginedSocket.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... opendb.o"
+	@echo "... opendb.i"
+	@echo "... opendb.s"
 	@echo "... protocol.o"
 	@echo "... protocol.i"
 	@echo "... protocol.s"
