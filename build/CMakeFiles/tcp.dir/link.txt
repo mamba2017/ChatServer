@@ -1,1 +1,1 @@
-/usr/bin/c++      -rdynamic CMakeFiles/tcp.dir/main.cpp.o CMakeFiles/tcp.dir/ChatServer.cpp.o CMakeFiles/tcp.dir/ChatSocket.cpp.o CMakeFiles/tcp.dir/Epoll.cpp.o CMakeFiles/tcp.dir/protocol.cpp.o  -o tcp 
+/usr/bin/c++      -rdynamic CMakeFiles/tcp.dir/main.cpp.o CMakeFiles/tcp.dir/ChatServer.cpp.o CMakeFiles/tcp.dir/ChatSocket.cpp.o CMakeFiles/tcp.dir/Epoll.cpp.o CMakeFiles/tcp.dir/LoginedSocket.cpp.o CMakeFiles/tcp.dir/opendb.cpp.o CMakeFiles/tcp.dir/protocol.cpp.o  -o tcp  -lmysqlclient 
