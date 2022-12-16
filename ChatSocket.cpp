@@ -9,14 +9,14 @@ ChatSocket::ChatSocket(int sockfd){
 void ChatSocket::offLine(int delete_sockfd)
 {
         std::string name;
-        std::list<LoginedUserSock *>::iterator iter = LoginedUserSock::getInstace().lus.begin();
-        for(;iter!=LoginedUserSock::getInstace().lus.end();iter++){
+        std::list<LoginedUserSock *>::iterator iter = LoginedUserSock::getInstance().lus.begin();
+        for(;iter!=LoginedUserSock::getInstance().lus.end();iter++){
             if((*iter)->socketFd == delete_sockfd){
                 name = (*iter)->name;
                 break;
             }
         }
-        LoginedUserSock::getInstace().lus.remove_if([&](LoginedUserSock *del){
+        LoginedUserSock::getInstance().lus.remove_if([&](LoginedUserSock *del){
                         return del->socketFd == delete_sockfd;
                     });
        
@@ -28,20 +28,21 @@ void ChatSocket::offLine(int delete_sockfd)
 void ChatSocket::login(const int &m_sockfd,const std::string &name)
 {
     LoginedUserSock *login = new LoginedUserSock(m_sockfd,name);
-    LoginedUserSock::getInstace().lus.push_back(login);
+    LoginedUserSock::getInstance().lus.push_back(login);
     printOline();
 }
-
+#include <iostream>
 void ChatSocket::handler(int clientfd, PDU *pdu)
 {
     switch (pdu->uiMsgType)
     {
     case ENUM_MSG_TYPE_REGIST_REQUEST:{
         /* code */
-        char name[32] = {"0/"};
-        char passwd[32] = {"0/"};
+        char name[32] = {'\0'};
+        char passwd[33] = {'\0'};
         memcpy(name,pdu->caData,32);
         memcpy(passwd,pdu->caData+32,32);
+        std::cout << passwd;
         PDU *pdu2 = mkPDU(0);
         if(OpenDB::getInstance().UserRegister(name,passwd)){
             pdu2->uiMsgType = ENUM_MSG_TYPE_REGIST_SUCCESS_RESPONSE;
@@ -55,8 +56,8 @@ void ChatSocket::handler(int clientfd, PDU *pdu)
         }
      case ENUM_MSG_TYPE_LOGIN_REQUEST:{
         /* code */
-        char name[32] = {"0/"};
-        char passwd[32] = {"0/"};
+        char name[32] = {'\0'};
+        char passwd[33] = {'\0'};
         memcpy(name,pdu->caData,32);
         memcpy(passwd,pdu->caData+32,32);
         PDU *pdu5 = mkPDU(0);
@@ -121,8 +122,8 @@ void ChatSocket::handler(int clientfd, PDU *pdu)
     }
     case ENUM_MSG_TYPE_MSG_BROADCAST_REQUEST:
     {
-        // MyTcpServer::getInstance().broadcast(pdu);
-        // break;
+        LoginedUserSock::getInstance().broadcast(pdu);
+        break;
     }
     default:
         break;
@@ -133,13 +134,13 @@ void ChatSocket::handler(int clientfd, PDU *pdu)
 void ChatSocket::printOline()
 {
     std::cout <<"pepoles online: ";
-    if(LoginedUserSock::getInstace().lus.empty()){
+    if(LoginedUserSock::getInstance().lus.empty()){
         std::cout << " 0 "<<std::endl;
         return;
     }
-    std::list<LoginedUserSock *>::iterator iter = LoginedUserSock::getInstace().lus.begin();
-    for(;iter!=LoginedUserSock::getInstace().lus.end();iter++){
-        if((*iter)->socketFd == LoginedUserSock::getInstace().lus.back()->socketFd){
+    std::list<LoginedUserSock *>::iterator iter = LoginedUserSock::getInstance().lus.begin();
+    for(;iter!=LoginedUserSock::getInstance().lus.end();iter++){
+        if((*iter)->socketFd == LoginedUserSock::getInstance().lus.back()->socketFd){
             std::cout << (*iter)->name<< std::endl;
             break;
         }

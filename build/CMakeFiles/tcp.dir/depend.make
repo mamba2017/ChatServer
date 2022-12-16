@@ -28,6 +28,7 @@ CMakeFiles/tcp.dir/Epoll.cpp.o: ../protocol.h
 
 CMakeFiles/tcp.dir/LoginedSocket.cpp.o: ../LoginedSocket.cpp
 CMakeFiles/tcp.dir/LoginedSocket.cpp.o: ../LoginedSocket.h
+CMakeFiles/tcp.dir/LoginedSocket.cpp.o: ../protocol.h
 
 CMakeFiles/tcp.dir/main.cpp.o: ../ChatServer.h
 CMakeFiles/tcp.dir/main.cpp.o: ../main.cpp

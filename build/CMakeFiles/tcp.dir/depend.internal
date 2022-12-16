@@ -29,6 +29,7 @@ CMakeFiles/tcp.dir/Epoll.cpp.o
 CMakeFiles/tcp.dir/LoginedSocket.cpp.o
  /home/ekko/chatServer/LoginedSocket.cpp
  /home/ekko/chatServer/LoginedSocket.h
+ /home/ekko/chatServer/protocol.h
 CMakeFiles/tcp.dir/main.cpp.o
  /home/ekko/chatServer/ChatServer.h
  /home/ekko/chatServer/main.cpp

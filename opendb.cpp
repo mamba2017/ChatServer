@@ -56,10 +56,10 @@ bool OpenDB::UserRegister(const std::string &name, const std::string &pwd)
     // timeb t;
     // long int tt = static_cast<long int>(t.time);
     // std::string ti =  std::to_string(tt);
-    char inert_str[255] = {"0/"};
-    sprintf(inert_str,"insert into users(name,phone,password,email) \
-    values ('%s', '18855626285', '%s','13241@qq.com')",name.c_str(),pwd.c_str());
-    int rc = mysql_real_query(conn_ptr, inert_str, strlen(inert_str));
+std::string inert_str ="insert into users(name,phone,password,email) \
+    values ('"+name+"', '18855626285', '"+pwd+"','13241@qq.com')";
+    std::cout<<inert_str<<std::endl;
+    int rc = mysql_real_query(conn_ptr, inert_str.c_str(), inert_str.size());
     if(rc != 0){
         std::cout << "Register failed";
         return false;
@@ -70,8 +70,9 @@ bool OpenDB::UserRegister(const std::string &name, const std::string &pwd)
 bool OpenDB::Userlogin(const std::string &name, const std::string &pwd)
 {
     std::cout <<"User Login:"<<name<<std::endl;
-     if(name.empty() || name.empty()) return false;
+     if(name.empty()||pwd.empty()) return false;
       std::string select_str ="select * from users where name = '"+name+"' and password = '"+pwd+"' and status = 0";
+      std::cout << select_str<<std::endl;
       int rc = mysql_real_query(conn_ptr, select_str.c_str(), select_str.size());
     if (0 != rc) {
         printf("mysql_real_query(): %s\n", mysql_error(conn_ptr));
@@ -83,7 +84,7 @@ bool OpenDB::Userlogin(const std::string &name, const std::string &pwd)
          return false;
     }
     int rows = mysql_num_rows(res);
-    if(rows <0){
+    if(rows <=0){
         return false;
     }
     mysql_free_result(res);
@@ -138,12 +139,11 @@ int OpenDB::SearchUser(const char *name)
     // if(name == nullptr){
     //     return -1; //用户不存在
     // }
-    // QString reg = QString("select status from userInfo where  name = '%1'").arg(name);
-    // QSqlQuery query;
-    // query.exec(reg);
-    // if(query.next()){
-    //    return query.value(0).toInt();
-    // }else{
+    // std::string t = name;
+    // std::string select_str ="select * from users where name = '"+t+"'";
+    // int rc = mysql_real_query(conn_ptr, select_str.c_str(), select_str.size());
+    // if (0 != rc) {
+    //     printf("mysql_real_query(): %s\n", mysql_error(conn_ptr));
     //     return -1; //用户不存在
     // }
     return 0;
